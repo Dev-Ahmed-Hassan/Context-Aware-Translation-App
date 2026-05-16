@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone Shift — Context-Aware Translation</title>
+    <meta name="description" content="A context-aware translation and text refinement web app powered by AI. Supports multiple languages, tones, and situational context.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-layer-group"></i> Tone Shift</h1>
+        </header>
+        <main class="editor-grid">
+            <section class="panel input-panel">
+                <div class="panel-header">
+                    <div class="mini-select-wrapper">
+                        <label>From:</label>
+                        <select id="source-lang">
+                            <option value="auto" selected>Auto-Detect</option>
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="German">German</option>
+                        </select>
+                    </div>
+                    <span id="char-count">0 / 5000</span>
+                </div>
+                <textarea id="source-text" placeholder="Paste your text here..."></textarea>
+                <div class="panel-footer">
+                    <button id="clear-btn" class="text-btn">Clear</button>
+                </div>
+            </section>
+
+            <aside class="controls">
+                <div class="mode-switch">
+                    <input type="radio" id="mode-translate" name="mode" value="translate" checked>
+                    <label for="mode-translate">Translate</label>
+                    <input type="radio" id="mode-refine" name="mode" value="refine">
+                    <label for="mode-refine">Refine</label>
+                </div>
+                <div class="settings-group">
+                    <div class="select-wrapper" id="target-lang-wrapper">
+                        <label>Target Language</label>
+                        <select id="target-lang">
+                            <optgroup label="Regional (Pakistan)">
+                                <option value="Urdu" selected>Urdu (اردو)</option>
+                                <option value="Punjabi (Pakistani Urdu)">Punjabi (پنجابی)</option>
+                                <option value="Sindhi">Sindhi (سنڌي)</option>
+                                <option value="Pashto">Pashto (پښتو)</option>
+                                <option value="Balochi">Balochi (بلوچی)</option>
+                            </optgroup>
+                            <optgroup label="International">
+                                <option value="English">English</option>
+                                <option value="Arabic">Arabic (العربية)</option>
+                                <option value="Persian">Persian (فارسی)</option>
+                                <option value="German">German (Deutsch)</option>
+                                <option value="Spanish">Spanish (Español)</option>
+                                <option value="French">French (Français)</option>
+                                <option value="Chinese">Chinese (中文)</option>
+                            </optgroup>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="select-wrapper">
+                        <label>Style / Tone</label>
+                        <select id="tone">
+                            <option disabled selected>Loading options...</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <!-- Context hint — makes the app genuinely "context-aware" -->
+                    <div class="select-wrapper" id="context-hint-wrapper">
+                        <label>Context / Situation <span class="optional-tag">(Optional)</span></label>
+                        <input type="text" id="context-hint"
+                               placeholder="e.g. formal business email, restaurant menu...">
+                    </div>
+                    <button id="process-btn" class="primary-btn">
+                        <span>Process Text</span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <section class="panel output-panel">
+                <div class="panel-header">
+                    <span>Result</span>
+                    <button id="copy-btn" class="icon-btn" title="Copy to clipboard">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+                <div class="output-wrapper">
+                    <textarea id="output-text" readonly placeholder="Output will appear here..."></textarea>
+                    <div id="loader" class="loader hidden">
+                        <div class="spinner"></div>
+                        <span>Processing...</span>
+                    </div>
+                </div>
+                <div class="output-actions">
+                    <button id="explain-btn" class="secondary-btn hidden">
+                        <i class="fa-solid fa-chalkboard-user"></i> Explain Grammar
+                    </button>
+                </div>
+                <div class="history-container">
+                    <div class="history-header">
+                        <h3><i class="fa-solid fa-clock-rotate-left"></i> History</h3>
+                        <button id="clear-history" class="text-btn">Clear</button>
+                    </div>
+                    <ul id="history-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>

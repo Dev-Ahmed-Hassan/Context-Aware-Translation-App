@@ -1,0 +1,24 @@
+# ── Environment ──
+.env
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+**/.venv/
+**/venv/
+**/env/
+
+# ── IDE / Editor ──
+.vscode/
+.idea/
+*.swp
+*.swo
+tempCodeRunnerFile.py
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── Node (if any frontend tooling added later) ──
+node_modules/
