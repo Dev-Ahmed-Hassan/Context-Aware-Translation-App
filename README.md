@@ -24,15 +24,15 @@ Built with **FastAPI** (Python) on the backend and **vanilla JavaScript** on the
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────┐         ┌─────────────────────┐         ┌──────────────┐
-│     Frontend         │  fetch  │     FastAPI          │  HTTP   │  Google       │
-│  (HTML/CSS/JS)       │───────→│  Backend             │───────→│  Gemini API   │
-│                      │  JSON   │                      │         │              │
-│  • User input        │←───────│  • Prompt builder    │←───────│  • AI model   │
-│  • Mode selection    │  JSON   │  • Request validation│  text   │              │
-│  • Context hint      │         │  • Error handling    │         │              │
-│  • History (local)   │         │  • CORS middleware   │         │              │
-└─────────────────────┘         └─────────────────────┘         └──────────────┘
+┌─────────────────────┐         ┌──────────────────────┐         ┌──────────────┐
+│     Frontend         │  fetch │     FastAPI          │  HTTP   │  Google      │
+│  (HTML/CSS/JS)       │───────→│  Backend             │───────→ │  Gemini API  │
+│                      │  JSON  │                      │         │              │
+│  • User input        │←───────│  • Prompt builder    │←─────── │  • AI model  │
+│  • Mode selection    │  JSON  │  • Request validation│  text   │              │
+│  • Context hint      │        │  • Error handling    │         │              │
+│  • History (local)   │        │  • CORS middleware   │         │              │
+└─────────────────────┘         └──────────────────────┘         └──────────────┘
 ```
 
 ### Request Lifecycle
