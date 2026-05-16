@@ -1,4 +1,4 @@
-# 🌐 Tone Shift — Context-Aware Translation Web App
+# Tone Shift — Context-Aware Translation Web App
 
 A full-stack web application for multilingual translation and text refinement, powered by Google Gemini AI. Unlike generic translation tools, Tone Shift supports **contextual prompt injection** — allowing users to specify the situational context (e.g. "formal business email", "casual gaming chat") to produce translations that are genuinely context-aware.
 
@@ -6,7 +6,7 @@ Built with **FastAPI** (Python) on the backend and **vanilla JavaScript** on the
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
@@ -21,7 +21,7 @@ Built with **FastAPI** (Python) on the backend and **vanilla JavaScript** on the
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────┐         ┌──────────────────────┐         ┌──────────────┐
@@ -48,7 +48,7 @@ Built with **FastAPI** (Python) on the backend and **vanilla JavaScript** on the
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 context-aware-translation-app/
@@ -75,7 +75,7 @@ context-aware-translation-app/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -133,7 +133,7 @@ python -m http.server 5500
 
 ---
 
-## 🔒 Security
+## Security
 
 - **API keys** are loaded from environment variables via `.env` (never hardcoded)
 - **`.env` is git-ignored** — secrets are never committed to version control
@@ -142,7 +142,7 @@ python -m http.server 5500
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -154,7 +154,7 @@ python -m http.server 5500
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 ### `POST /process_text`
 
@@ -176,8 +176,8 @@ Process text based on the specified mode.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `source_text` | string | ✅ | Text to process (1–5000 chars) |
-| `mode` | string | ✅ | `translate`, `refine`, or `explain` |
+| `source_text` | string | Yes | Text to process (1–5000 chars) |
+| `mode` | string | Yes | `translate`, `refine`, or `explain` |
 | `source_lang` | string | No | Source language (default: `auto`) |
 | `target_lang` | string | No | Target language for translation |
 | `tone` | string | No | Style/tone (default: `Normal`) |
@@ -198,7 +198,7 @@ Returns API health status.
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - [ ] User authentication and cloud-saved history
 - [ ] Response caching for repeated translations
@@ -209,6 +209,6 @@ Returns API health status.
 
 ---
 
-## 📄 License
+## License
 
 This project is for academic and portfolio purposes.
